@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(plasma-disks)
-set(PROJECT_VERSION "6.7.4")
+set(PROJECT_VERSION "6.7.3")
 
 set(QT_MIN_VERSION "6.10.0")
 set(KF6_MIN_VERSION "6.26.0")
@@ -14,7 +14,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(CMakeDependentOption)
 include(KDEInstallDirs)
@@ -64,7 +63,6 @@ install(FILES org.kde.plasma.disks.metainfo.xml DESTINATION ${KDE_INSTALL_METAIN
 
 # add clang-format target for all our real source files
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
-list(FILTER ALL_CLANG_FORMAT_SOURCE_FILES EXCLUDE REGEX ".*\\.ccls-cache/.*")
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
